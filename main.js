@@ -6,6 +6,7 @@ rightWristY=0;
 song1="";
 song2="";
 scoreLeftWrist="";
+scoreRightWrist="";
 
 name="";
 function setup(){
@@ -32,6 +33,39 @@ function draw(){
         song1.setVolume(volume);
         song2.setVolume(volume);
         document.getElementById("volume").innerHTML="Volume: "+volume;
+    }
+    if(scoreRightWrist>0.2){
+        circle(rightWristX,rightWristY,20);
+        if(rightWristY>0 && rightWristY<=100){
+            document.getElementById("speed").innerHTML="Speed = 0.5x";
+            song.rate(0.5);
+            song1.rate(0.5);
+            song2.rate(0.5);
+        }
+        if(rightWristY>100 && rightWristY<=200){
+            document.getElementById("speed").innerHTML="Speed = 1x";
+            song.rate(1);
+            song1.rate(1);
+            song2.rate(1);
+        }
+        if(rightWristY>200 && rightWristY<=300){
+            document.getElementById("speed").innerHTML="Speed = 1.5x";
+            song.rate(1.5);
+            song1.rate(1.5);
+            song2.rate(1.5);
+        }
+        if(rightWristY>300 && rightWristY<=400){
+            document.getElementById("speed").innerHTML="Speed = 2x";
+            song.rate(2);
+            song1.rate(2);
+            song2.rate(2);
+        }
+        if(rightWristY>400 && rightWristY<=500){
+            document.getElementById("speed").innerHTML="Speed = 2.5x";
+            song.rate(2.5);
+            song1.rate(2.5);
+            song2.rate(2.5);
+        }
     }
 }
 
@@ -91,6 +125,9 @@ if(results.length>0){
 
     scoreLeftWrist=results[0].pose.keypoints[9].score;
     console.log("Score of the left wrist is: "+scoreLeftWrist);
-}
-}
 
+    scoreRightWrist=results[0].pose.keypoints[10].score;
+    console.log("Score of the right wrist is: "+scoreRightWrist);
+
+}
+}
